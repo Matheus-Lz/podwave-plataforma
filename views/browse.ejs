@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title><%= titulo %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#0F131E] text-white">
+
+  <!-- Navbar -->
+  <header class="p-4 flex justify-between items-center bg-[#1A2129] fixed w-full z-10 shadow">
+    <div class="flex items-center space-x-4">
+      <img src="images/LogoIcon.jpeg" alt="Logo PodWave" class="h-10 w-10 rounded-full" />
+      <h1 class="text-xl font-semibold text-[#59B2D5]">PodWave</h1>
+      <nav class="hidden md:flex space-x-6 text-white ml-6">
+        <a class="hover:text-[#59B2D5] transition-colors" href="#">Principal</a>
+        <a class="hover:text-[#59B2D5] transition-colors" href="#">Novidades</a>
+        <a class="hover:text-[#59B2D5] transition-colors" href="#">Minha Lista</a>
+      </nav>
+    </div>
+
+    <div class="relative">
+      <button id="profileBtn">
+        <img src="images/<%= imagem %>" alt="Usuário" class="h-9 w-9 rounded-full border-2 border-[#59B2D5]">
+      </button>
+      <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-[#202A3F] border border-[#59B2D5] rounded shadow-lg text-sm z-50">
+        <div class="px-4 py-2 border-b border-[#59B2D5] font-bold text-[#59B2D5]">PodWave</div>
+        <a href="/logout" class="block px-4 py-2 hover:bg-red-500 hover:text-white">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="pt-20 px-6">
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold mb-4 text-white">Destaques</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-[#202A3F] rounded-lg p-4 shadow">
+          <h3 class="font-semibold text-[#59B2D5]">Momento de Fé - 19 Março de 2025</h3>
+          <p class="text-sm">Episódio - MOMENTO DE FÉ COM O PADRE MARCELO ROSSI</p>
+          <img src="https://placehold.co/300x180/59B2D5/fff?text=Momento+de+Fé" class="mt-2 rounded" />
+          <p class="text-xs mt-2">19 de mar. • 47min 25s</p>
+        </div>
+        <div class="bg-[#202A3F] rounded-lg p-4 shadow">
+          <h3 class="font-semibold text-[#59B2D5]">#70: Você é maduro espiritualmente?</h3>
+          <p class="text-sm">Episódio - Dentro da Bíblia</p>
+          <img src="https://placehold.co/300x180/59B2D5/fff?text=Dentro+da+Bíblia" class="mt-2 rounded" />
+          <p class="text-xs mt-2">24 de mar. • 12min 38s</p>
+        </div>
+        <div class="bg-[#202A3F] rounded-lg p-4 shadow">
+          <h3 class="font-semibold text-[#59B2D5]">Mistérios Dolorosos - Santo Terço - Frei Gilson</h3>
+          <p class="text-sm">Episódio - Santo Católico</p>
+          <img src="https://placehold.co/300x180/59B2D5/fff?text=Frei+Gilson" class="mt-2 rounded" />
+          <p class="text-xs mt-2">fev. de 2024 • 25min 1s</p>
+        </div>
+        <div class="bg-[#202A3F] rounded-lg p-4 shadow">
+          <h3 class="font-semibold text-[#59B2D5]">Terço - Mistérios Gloriosos</h3>
+          <p class="text-sm">Episódio - Santo Terço</p>
+          <img src="https://placehold.co/300x180/59B2D5/fff?text=Gloriosos" class="mt-2 rounded" />
+          <p class="text-xs mt-2">set. de 2020 • 24min 46s</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold mb-4 text-white">Minhas Recomendações</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-[#202A3F] p-4 rounded shadow text-center">
+          <img src="https://placehold.co/150x150/59B2D5/fff?text=Podcast+1" class="mx-auto mb-2 rounded" />
+          <p class="font-medium">Para dar nome às coisas</p>
+        </div>
+        <div class="bg-[#202A3F] p-4 rounded shadow text-center">
+          <img src="https://placehold.co/150x150/59B2D5/fff?text=Podcast+2" class="mx-auto mb-2 rounded" />
+          <p class="font-medium">LVTALKS</p>
+        </div>
+        <div class="bg-[#202A3F] p-4 rounded shadow text-center">
+          <img src="https://placehold.co/150x150/59B2D5/fff?text=Podcast+3" class="mx-auto mb-2 rounded" />
+          <p class="font-medium">gostosaa também choram</p>
+        </div>
+        <div class="bg-[#202A3F] p-4 rounded shadow text-center">
+          <img src="https://placehold.co/150x150/59B2D5/fff?text=Podcast+4" class="mx-auto mb-2 rounded" />
+          <p class="font-medium">Bom dia, Obvious</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold mb-4 text-white">Outros Podcasts</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-[#202A3F] p-4 rounded shadow text-center">
+          <img src="https://placehold.co/150x150/59B2D5/fff?text=Podcast+5" class="mx-auto mb-2 rounded" />
+          <p class="font-medium">Na mesma frequência</p>
+        </div>
+        <div class="bg-[#202A3F] p-4 rounded shadow text-center">
+          <img src="https://placehold.co/150x150/59B2D5/fff?text=Podcast+6" class="mx-auto mb-2 rounded" />
+          <p class="font-medium">Isabela Matte Podcast</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const btn = document.getElementById('profileBtn');
+    const menu = document.getElementById('profileMenu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

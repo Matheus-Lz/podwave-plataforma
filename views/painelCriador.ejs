@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= titulo %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0F131E] text-white min-h-screen flex">
+
+  <% include partials/sidebar.ejs %>
+
+  <!-- Main content -->
+  <main class="flex-1 p-10">
+    <h2 class="text-3xl font-bold mb-6">Bem-vindo, <%= nomePodcast %>!</h2>
+    <p>Escolha uma opção no menu ao lado para gerenciar seu podcast.</p>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= titulo %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0F131E] flex items-center justify-center min-h-screen text-white">
+
+  <div class="bg-[#202A3F] p-8 rounded w-full max-w-md">
+    <h1 class="text-xl font-semibold mb-6">Criar seu podcast</h1>
+    <form action="/criar-podcast" method="POST" class="space-y-4">
+      <input name="titulo" placeholder="Título" required
+        class="w-full p-2 rounded bg-[#0F131E] border border-gray-600" />
+      <textarea name="descricao" placeholder="Descrição" rows="4" required
+        class="w-full p-2 rounded bg-[#0F131E] border border-gray-600"></textarea>
+      <input name="imagem" placeholder="URL da imagem (opcional)"
+        class="w-full p-2 rounded bg-[#0F131E] border border-gray-600" />
+      <button type="submit" class="w-full bg-[#59B2D5] p-2 rounded hover:bg-[#4aa0c1]">Criar Podcast</button>
+    </form>
+  </div>
+
+</body>
+</html>

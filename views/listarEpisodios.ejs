@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Meus Episódios - PodWave</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0F131E] text-white min-h-screen flex">
+
+  <% include partials/sidebar.ejs %>
+
+  <main class="flex-1 p-10">
+    <h1 class="text-3xl font-bold mb-6">Meus Episódios</h1>
+
+    <% if (episodios.length === 0) { %>
+      <p>Nenhum episódio encontrado.</p>
+    <% } else { %>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 [grid-auto-rows:auto]">
+        <% episodios.forEach(ep => { %>
+          <div class="episodio-card bg-[#202A3F] p-4 rounded shadow relative">
+
+            <!-- THUMBNAIL COM PLAY -->
+            <div class="relative group cursor-pointer" onclick="togglePlayer('<%= ep.id_episodio %>')">
+              <img src="/uploads/thumbnails/<%= ep.thumbnail %>" alt="Thumbnail"
+                class="w-full h-40 object-cover rounded mb-2" />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- PLAYER HIDDEN -->
+            <div id="player-<%= ep.id_episodio %>" class="hidden mt-2 space-y-2">
+              <p class="font-semibold text-[#59B2D5]"><%= ep.titulo %></p>
+              <audio controls class="w-full">
+                <source src="/uploads/episodios/<%= ep.arquivo_audio %>" type="audio/mpeg">
+                Seu navegador não suporta o player de áudio.
+              </audio>
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <p class="text-sm mt-1"><%= ep.descricao %></p>
+
+            <!-- FORMULÁRIO DE EDIÇÃO -->
+            <form method="POST" action="/painel-criador/editar-episodio/<%= ep.id_episodio %>?_method=PUT"
+              enctype="multipart/form-data" class="edit-form hidden mt-4 space-y-2">
+              <input type="hidden" name="thumbnailAntiga" value="<%= ep.thumbnail %>">
+              <input type="text" name="titulo" value="<%= ep.titulo %>" required
+                class="w-full p-2 bg-[#0F131E] border border-gray-600 rounded" />
+              <textarea name="descricao" rows="3" required
+                class="w-full p-2 bg-[#0F131E] border border-gray-600 rounded"><%= ep.descricao %></textarea>
+              <input type="file" name="thumbnail" accept="image/*" />
+              <button type="submit"
+                class="bg-yellow-500 text-black px-4 py-1 rounded hover:bg-yellow-600">Salvar</button>
+            </form>
+
+            <!-- AÇÕES -->
+            <div class="mt-4 flex justify-between">
+              <button type="button"
+                class="toggle-edit text-sm text-yellow-400 hover:underline">✏️ Editar</button>
+              <form method="POST" action="/painel-criador/excluir-episodio/<%= ep.id_episodio %>?_method=DELETE">
+                <button type="submit" class="text-sm text-red-400 hover:underline">🗑 Excluir</button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </main>
+
+  <script>
+    // Mostrar/ocultar player
+    function togglePlayer(id) {
+      const el = document.getElementById('player-' + id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // Mostrar/ocultar formulário de edição
+    document.querySelectorAll('.toggle-edit').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const form = btn.closest('.episodio-card').querySelector('.edit-form');
+        if (form) form.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

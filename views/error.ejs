@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Erro - PodWave</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0F131E;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: #59B2D5;
+    }
+    pre {
+      background-color: #202A3F;
+      padding: 1em;
+      border-radius: 6px;
+      max-width: 90vw;
+      overflow-x: auto;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ocorreu um erro</h1>
+  <p><%= message %></p>
+  <% if (error.status) { %>
+    <pre>Status: <%= error.status %></pre>
+  <% } %>
+  <% if (error.stack) { %>
+    <pre><%= error.stack %></pre>
+  <% } %>
+</body>
+</html>

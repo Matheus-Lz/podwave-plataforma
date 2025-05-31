@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Enviar Episódio - PodWave</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0F131E] text-white min-h-screen flex">
+
+  <!-- Sidebar incluída via partial -->
+  <% include partials/sidebar.ejs %>
+
+  <!-- Conteúdo -->
+  <main class="flex-1 p-10">
+    <h1 class="text-3xl font-bold mb-6">Novo Episódio</h1>
+
+    <% if (mensagem) { %>
+      <p class="mb-4 text-green-400"><%= mensagem %></p>
+    <% } %>
+
+    <form action="/painel-criador/enviar-episodio" method="POST" enctype="multipart/form-data" class="space-y-6 max-w-xl">
+      <div>
+        <label class="block font-semibold mb-1">Título</label>
+        <input type="text" name="titulo" required class="w-full px-4 py-2 rounded bg-[#0F131E] border border-gray-600" />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Descrição</label>
+        <textarea name="descricao" rows="4" required class="w-full px-4 py-2 rounded bg-[#0F131E] border border-gray-600"></textarea>
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Áudio (MP3 ou MP4)</label>
+        <input type="file" name="arquivo_audio" accept=".mp3,.mp4" required />
+      </div>
+
+      <div>
+        <label class="block font-semibold mb-1">Thumbnail (Imagem)</label>
+        <input type="file" name="thumbnail" accept="image/*" required />
+      </div>
+
+      <button type="submit" class="px-6 py-2 bg-[#59B2D5] rounded hover:bg-[#4aa0c1]">Salvar</button>
+    </form>
+  </main>
+
+</body>
+</html>

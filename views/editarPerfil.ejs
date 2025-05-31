@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editar Perfil - PodWave</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0F131E] text-white min-h-screen flex">
+
+  <% include partials/sidebar.ejs %>
+
+  <!-- Conteúdo -->
+  <main class="flex-1 p-10">
+    <h1 class="text-3xl font-bold mb-6">Editar Perfil do Podcast</h1>
+
+    <% if (mensagem) { %>
+      <p class="mb-4 text-green-400"><%= mensagem %></p>
+    <% } %>
+
+    <form action="/painel-criador/editar-perfil" method="POST" enctype="multipart/form-data" class="max-w-lg space-y-4">
+      <div>
+        <label for="descricao" class="block mb-1">Descrição</label>
+        <textarea id="descricao" name="descricao" rows="4" required class="w-full p-2 rounded bg-[#1A2129] border border-gray-600"><%= podcast.descricao %></textarea>
+      </div>
+
+      <div>
+        <label for="imagem" class="block mb-1">Imagem (opcional)</label>
+        <% if (podcast.imagem) { %>
+          <img src="<%= podcast.imagem %>" alt="Imagem atual" class="mb-2 rounded w-32 h-32 object-cover" />
+        <% } %>
+        <input type="file" name="imagem" accept="image/*" class="w-full" />
+      </div>
+
+      <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
+        Salvar Alterações
+      </button>
+    </form>
+  </main>
+
+</body>
+</html>
